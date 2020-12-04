@@ -1,14 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useState} from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import PlayScreen from './src/PlayScreen'
 
 export default function App() {
-  return (
+  const [play, setPlay] = useState(false)
+  return play ?   
+    (<PlayScreen/>): (
+
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={{fontSize: 35}}>Rock Paper Scissors</Text>
+      <Text style={{marginTop:50,fontSize: 70}}>✊ ✋ ✌️</Text>
+      <View style={{marginTop:50,width: 240}}>
+        <Button onPress={()=>setPlay(true)}  title="Play"/>
+      </View>
       <StatusBar style="auto" />
     </View>
-  );
+    )
 }
 
 const styles = StyleSheet.create({
